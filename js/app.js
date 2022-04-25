@@ -77,7 +77,6 @@ lastname.addEventListener('input', (e) => { // vérif champ nom
 
  qtyTournament.addEventListener('input', (e) => { // vérif champ tournoi
    const qty = parseInt(e.target.value)
-   console.log(validNumber(qty))
    if(qty < 0 || qty > 99 || !validNumber(qty)) {
     tourerror.innerText = `Veuillez rentrer un chiffre compris entre 0 et 99 inclus`
    } else {
