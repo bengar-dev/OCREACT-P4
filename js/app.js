@@ -46,32 +46,35 @@ const msgerror = document.getElementById('alertmsg')
 //vérification des champs au fil de l'eau
 
 firstname.addEventListener('input', (e) => { // vérif champ prénom
+ const inputFirstname = document.getElementById('first')
  if(!validName(e.target.value)) {
     firsterror.innerText = `Veuillez entrer 2 caractères ou plus pour le champ du prénom.`
-    document.getElementById('first').classList.add('alert-input')
+    inputFirstname.classList.add('alert-input')
   } else {
     firsterror.innerText = ``
-    document.getElementById('first').classList.remove('alert-input')
+    inputFirstname.classList.remove('alert-input')
   }
 })
 
 lastname.addEventListener('input', (e) => { // vérif champ nom
+  const inputLastname = document.getElementById('last')
   if(!validName(e.target.value)) {
      lasterror.innerText = `Veuillez entrer 2 caractères ou plus pour le champ du nom.`
-     document.getElementById('last').classList.add('alert-input')
+     inputLastname.classList.add('alert-input')
    } else {
     lasterror.innerText = ``
-     document.getElementById('last').classList.remove('alert-input')
+     inputLastname.classList.remove('alert-input')
    }
  })
 
  email.addEventListener('input', (e) => { // vérif champ email
+  const inputEmail = document.getElementById('email')
   if(!validEmail(e.target.value)) {
      mailerror.innerText = `Veuillez vérifier le format de l'email.`
-     document.getElementById('email').classList.add('alert-input')
+     inputEmail.classList.add('alert-input')
    } else {
     mailerror.innerText = ``
-     document.getElementById('email').classList.remove('alert-input')
+    inputEmail.classList.remove('alert-input')
    }
  })
 
@@ -85,15 +88,16 @@ lastname.addEventListener('input', (e) => { // vérif champ nom
  })
 
  birthdate.addEventListener('input', (e) => { // vérif champ age
-  let diff = Date.now() - Date.parse(e.target.value) // calcul de l'age de l'utilisateur
-  let age = new Date(diff) // on convertit l'age calculer en date
-  let result = Math.abs(age.getUTCFullYear() - 1970) // on soustrait 1970 à l'age calculer
+  const inputBirthdate = document.getElementById('birthdate')
+  const diff = Date.now() - Date.parse(e.target.value) // calcul de l'age de l'utilisateur
+  const age = new Date(diff) // on convertit l'age calculer en date
+  const result = Math.abs(age.getUTCFullYear() - 1970) // on soustrait 1970 à l'age calculer
   if(result < 16) {
     birtherror.innerText = `Vous n'avez pas l'age requis ( - 16 )`
-    document.getElementById('birthdate').classList.add('alert-input')
+    inputBirthdate.classList.add('alert-input')
   } else {
     birtherror.innerText = ``
-    document.getElementById('birthdate').classList.remove('alert-input')
+    inputBirthdate.classList.remove('alert-input')
   }
  })
 
@@ -111,6 +115,11 @@ btnSubmit.addEventListener('click', (e) => {
   })
 
   if(!check) { // on vérifie bien que check n'est pas à false
+   /* const test = document.querySelectorAll('.formData input[type=radio]')
+    test.forEach(el => {
+      el.classList.add('alert-icon')
+      console.log(el.classList)
+    }) */
     cityerror.innerText = `Veuillez sélectionner une ville.`
   } else {
     cityerror.innerText = ``
@@ -132,7 +141,7 @@ btnSubmit.addEventListener('click', (e) => {
             `
             document.getElementById('closemdl').addEventListener('click', launchModal) // on rajoute un événement pour fermer la modal avec le nouveau boutton "Fermer"
             
-            let data = {
+            const data = {
               firstname: firstname.value,
               lastname: lastname.value,
               email: email.value,
