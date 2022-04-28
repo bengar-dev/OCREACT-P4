@@ -46,8 +46,8 @@ const msgerror = document.getElementById('alertmsg')
 //vérification des champs au fil de l'eau
 
 firstname.addEventListener('input', (e) => { // vérif champ prénom
- const inputFirstname = document.getElementById('first')
- if(!validName(e.target.value)) {
+  const inputFirstname = document.getElementById('first')
+  if (!validName(e.target.value)) {
     firsterror.innerText = `Veuillez entrer 2 caractères ou plus pour le champ du prénom.`
     inputFirstname.classList.add('alert-input')
   } else {
@@ -58,48 +58,48 @@ firstname.addEventListener('input', (e) => { // vérif champ prénom
 
 lastname.addEventListener('input', (e) => { // vérif champ nom
   const inputLastname = document.getElementById('last')
-  if(!validName(e.target.value)) {
-     lasterror.innerText = `Veuillez entrer 2 caractères ou plus pour le champ du nom.`
-     inputLastname.classList.add('alert-input')
-   } else {
+  if (!validName(e.target.value)) {
+    lasterror.innerText = `Veuillez entrer 2 caractères ou plus pour le champ du nom.`
+    inputLastname.classList.add('alert-input')
+  } else {
     lasterror.innerText = ``
-     inputLastname.classList.remove('alert-input')
-   }
- })
+    inputLastname.classList.remove('alert-input')
+  }
+})
 
- email.addEventListener('input', (e) => { // vérif champ email
+email.addEventListener('input', (e) => { // vérif champ email
   const inputEmail = document.getElementById('email')
-  if(!validEmail(e.target.value)) {
-     mailerror.innerText = `Veuillez vérifier le format de l'email.`
-     inputEmail.classList.add('alert-input')
-   } else {
+  if (!validEmail(e.target.value)) {
+    mailerror.innerText = `Veuillez vérifier le format de l'email.`
+    inputEmail.classList.add('alert-input')
+  } else {
     mailerror.innerText = ``
     inputEmail.classList.remove('alert-input')
-   }
- })
+  }
+})
 
- qtyTournament.addEventListener('input', (e) => { // vérif champ tournoi
-   const qty = parseInt(e.target.value)
-   if(qty < 0 || qty > 99 || !validNumber(qty)) {
+qtyTournament.addEventListener('input', (e) => { // vérif champ tournoi
+  const qty = parseInt(e.target.value)
+  if (qty < 0 || qty > 99 || !validNumber(qty)) {
     tourerror.innerText = `Veuillez rentrer un chiffre compris entre 0 et 99 inclus`
-   } else {
+  } else {
     tourerror.innerText = ``
-   }
- })
+  }
+})
 
- birthdate.addEventListener('input', (e) => { // vérif champ age
+birthdate.addEventListener('input', (e) => { // vérif champ age
   const inputBirthdate = document.getElementById('birthdate')
   const diff = Date.now() - Date.parse(e.target.value) // calcul de l'age de l'utilisateur
   const age = new Date(diff) // on convertit l'age calculer en date
   const result = Math.abs(age.getUTCFullYear() - 1970) // on soustrait 1970 à l'age calculer
-  if(result < 16) {
+  if (result < 16) {
     birtherror.innerText = `Vous n'avez pas l'age requis ( - 16 )`
     inputBirthdate.classList.add('alert-input')
   } else {
     birtherror.innerText = ``
     inputBirthdate.classList.remove('alert-input')
   }
- })
+})
 
 // sur le click de validation du formulaire on appelle notre fonction validForm et on lui passe les valeurs des inputs.
 btnSubmit.addEventListener('click', (e) => {
@@ -109,52 +109,66 @@ btnSubmit.addEventListener('click', (e) => {
   let check = false // on initialise une variable check à false qui va nous permettre de la passer à true dans le cas où un boutton radio a été selectionner
   const formData = document.querySelectorAll('.formData input[type=radio]')
   formData.forEach(e => { // on parcours le tableau de boutton et on passe check à true si un boutton à bien été check
-    if(e.checked) {
+    if (e.checked) {
       check = true
     }
   })
 
-  if(!check) { // on vérifie bien que check n'est pas à false
-   /* const test = document.querySelectorAll('.formData input[type=radio]')
-    test.forEach(el => {
-      el.classList.add('alert-icon')
-      console.log(el.classList)
-    }) */
+  if (!check) { // on vérifie bien que check n'est pas à false
+    /* const test = document.querySelectorAll('.formData input[type=radio]')
+     test.forEach(el => {
+       el.classList.add('alert-icon')
+       console.log(el.classList)
+     }) */
     cityerror.innerText = `Veuillez sélectionner une ville.`
   } else {
     cityerror.innerText = ``
   }
 
-  if(!rules.checked) { // on vérifie si le réglement a bien été accepté
+  if (!rules.checked) { // on vérifie si le réglement a bien été accepté
     ruleserror.innerText = `Veuillez accepter le réglement.`
-  }else {
+  } else {
     ruleserror.innerText = ''
   }
 
   // on vérifie si on a pas des champs vide et qu'il n'y ai aucun message d'erreur
-  if(firstname.value && lastname.value && email.value && birthdate.value && qtyTournament.value && check && rules.checked && birtherror.innerText === '' && firsterror.innerText === '' && lasterror.innerText === '' && mailerror.innerText === '' && tourerror.innerText === '') {
-    document.querySelector('.modal-body').innerHTML = `
+  if (
+    firstname.value &&
+    lastname.value &&
+    email.value &&
+    birthdate.value &&
+    qtyTournament.value &&
+    check &&
+    rules.checked &&
+    birtherror.innerText === "" &&
+    firsterror.innerText === "" &&
+    lasterror.innerText === "" &&
+    mailerror.innerText === "" &&
+    tourerror.innerText === ""
+  ) {
+    document.querySelector(".modal-body").innerHTML = `
             <div class='confirm-register'>
                 <p>Merci pour votre inscription</p>
                 <button id='closemdl'>Fermer</button>
             </div>
-            `
-            document.getElementById('closemdl').addEventListener('click', launchModal) // on rajoute un événement pour fermer la modal avec le nouveau boutton "Fermer"
-            
-            const data = {
-              firstname: firstname.value,
-              lastname: lastname.value,
-              email: email.value,
-              birthdate: birthdate.value,
-              tournament: qtyTournament.value,
-            }
-            
-            console.log(data)
+            `;
+    document.getElementById("closemdl").addEventListener("click", launchModal); // on rajoute un événement pour fermer la modal avec le nouveau boutton "Fermer"
 
-            return true
-  } else { // si les conditions de ne sont pas remplis on rajoute un message général pour demander à l'utilisateur de vérifier les champs.
-    msgerror.innerText = `Erreur : Veuillez vérifier tous les champs.`
-    return false
+    const data = {
+      firstname: firstname.value,
+      lastname: lastname.value,
+      email: email.value,
+      birthdate: birthdate.value,
+      tournament: qtyTournament.value,
+    };
+
+    console.log(data);
+
+    return true;
+  } else {
+    // si les conditions de ne sont pas remplis on rajoute un message général pour demander à l'utilisateur de vérifier les champs.
+    msgerror.innerText = `Erreur : Veuillez vérifier tous les champs.`;
+    return false;
   }
 
 })
