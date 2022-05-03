@@ -1,15 +1,3 @@
-function validEmail(value) { // fonction regex qui vérifie le format de l'email
-  return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
-}
-
-function validName(value) { // fonction regex qui vérifie que le nom/prénom compte plus de deux caractères
-  return /^([A-Z][a-z]+([ ]?[a-z]?['-]?[A-Z][a-z]+)*)$/g.test(value);
-}
-
-function validNumber(value) { // fonction regex qui vérifie si l'utilisateur saisie bien un nombre
-  return /[0-9]/g.test(value)
-}
-
 // DOM Elements (déclaration des const qui vont nous permettre de cibler des éléments de notre)
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
@@ -168,6 +156,7 @@ btnSubmit.addEventListener('click', (e) => {
     console.log(data);
 
     return true;
+    
   } else {
     // si les conditions de ne sont pas remplis on rajoute un message général pour demander à l'utilisateur de vérifier les champs.
     msgerror.innerText = `Erreur : Veuillez vérifier tous les champs.`;
