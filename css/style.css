@@ -113,6 +113,10 @@ main {
 
 }
 
+.alert-icon {
+  border: 2px solid #fe142f!important;
+}
+
 .alert-input {
   border:1px solid red;
 }

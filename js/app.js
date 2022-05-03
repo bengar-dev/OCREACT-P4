@@ -114,15 +114,18 @@ btnSubmit.addEventListener('click', (e) => {
     }
   })
 
+  const checkboxArray = document.querySelectorAll('.formData .checkbox-label .checkbox-icon') // tableau des checkbox villes
+
   if (!check) { // on vérifie bien que check n'est pas à false
-    /* const test = document.querySelectorAll('.formData input[type=radio]')
-     test.forEach(el => {
-       el.classList.add('alert-icon')
-       console.log(el.classList)
-     }) */
     cityerror.innerText = `Veuillez sélectionner une ville.`
+    checkboxArray.forEach(el => {
+      el.classList.add('alert-icon')
+    })
   } else {
     cityerror.innerText = ``
+    checkboxArray.forEach(el => {
+      el.classList.remove('alert-icon')
+    })
   }
 
   if (!rules.checked) { // on vérifie si le réglement a bien été accepté
