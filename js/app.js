@@ -35,7 +35,7 @@ const msgerror = document.getElementById('alertmsg')
 
 firstname.addEventListener('input', (e) => { // vérif champ prénom
   if (!validName(e.target.value)) {
-    firsterror.innerText = `Veuillez entrer 2 caractères ou plus pour le champ du prénom.`
+    firsterror.innerText = `Le prénom doit faire deux caractères minimum et commencer par une majuscule.`
     firstname.classList.add('alert-input')
   } else {
     firsterror.innerText = ``
@@ -45,7 +45,7 @@ firstname.addEventListener('input', (e) => { // vérif champ prénom
 
 lastname.addEventListener('input', (e) => { // vérif champ nom
   if (!validName(e.target.value)) {
-    lasterror.innerText = `Veuillez entrer 2 caractères ou plus pour le champ du nom.`
+    lasterror.innerText = `Le nom doit faire deux caractères minimum et commencer par une majuscule.`
     lastname.classList.add('alert-input')
   } else {
     lasterror.innerText = ``
