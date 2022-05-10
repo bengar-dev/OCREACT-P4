@@ -34,33 +34,15 @@ const msgerror = document.getElementById('alertmsg')
 //vérification des champs au fil de l'eau
 
 firstname.addEventListener('input', (e) => { // vérif champ prénom
-  if (!validName(e.target.value)) {
-    firsterror.innerText = `Le prénom doit faire deux caractères minimum et commencer par une majuscule.`
-    firstname.classList.add('alert-input')
-  } else {
-    firsterror.innerText = ``
-    firstname.classList.remove('alert-input')
-  }
+  handleError(firstname, e.target.value, firsterror) 
 })
 
 lastname.addEventListener('input', (e) => { // vérif champ nom
-  if (!validName(e.target.value)) {
-    lasterror.innerText = `Le nom doit faire deux caractères minimum et commencer par une majuscule.`
-    lastname.classList.add('alert-input')
-  } else {
-    lasterror.innerText = ``
-    lastname.classList.remove('alert-input')
-  }
+  handleError(lastname, e.target.value, lasterror)
 })
 
 email.addEventListener('input', (e) => { // vérif champ email
-  if (!validEmail(e.target.value)) {
-    mailerror.innerText = `Veuillez vérifier le format de l'email.`
-    email.classList.add('alert-input')
-  } else {
-    mailerror.innerText = ``
-    email.classList.remove('alert-input')
-  }
+  handleError(email, e.target.value, mailerror)
 })
 
 qtyTournament.addEventListener('input', (e) => { // vérif champ tournoi
