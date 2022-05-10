@@ -1,4 +1,4 @@
-// DOM Elements (déclaration des const qui vont nous permettre de cibler des éléments de notre)
+// DOM Elements déclaration des const qui vont nous permettre de cibler des éléments
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
@@ -34,35 +34,32 @@ const msgerror = document.getElementById('alertmsg')
 //vérification des champs au fil de l'eau
 
 firstname.addEventListener('input', (e) => { // vérif champ prénom
-  const inputFirstname = document.getElementById('first')
   if (!validName(e.target.value)) {
     firsterror.innerText = `Veuillez entrer 2 caractères ou plus pour le champ du prénom.`
-    inputFirstname.classList.add('alert-input')
+    firstname.classList.add('alert-input')
   } else {
     firsterror.innerText = ``
-    inputFirstname.classList.remove('alert-input')
+    firstname.classList.remove('alert-input')
   }
 })
 
 lastname.addEventListener('input', (e) => { // vérif champ nom
-  const inputLastname = document.getElementById('last')
   if (!validName(e.target.value)) {
     lasterror.innerText = `Veuillez entrer 2 caractères ou plus pour le champ du nom.`
-    inputLastname.classList.add('alert-input')
+    lastname.classList.add('alert-input')
   } else {
     lasterror.innerText = ``
-    inputLastname.classList.remove('alert-input')
+    lastname.classList.remove('alert-input')
   }
 })
 
 email.addEventListener('input', (e) => { // vérif champ email
-  const inputEmail = document.getElementById('email')
   if (!validEmail(e.target.value)) {
     mailerror.innerText = `Veuillez vérifier le format de l'email.`
-    inputEmail.classList.add('alert-input')
+    email.classList.add('alert-input')
   } else {
     mailerror.innerText = ``
-    inputEmail.classList.remove('alert-input')
+    email.classList.remove('alert-input')
   }
 })
 
@@ -76,16 +73,15 @@ qtyTournament.addEventListener('input', (e) => { // vérif champ tournoi
 })
 
 birthdate.addEventListener('input', (e) => { // vérif champ age
-  const inputBirthdate = document.getElementById('birthdate')
   const diff = Date.now() - Date.parse(e.target.value) // calcul de l'age de l'utilisateur
   const age = new Date(diff) // on convertit l'age calculer en date
   const result = Math.abs(age.getUTCFullYear() - 1970) // on soustrait 1970 à l'age calculer
   if (result < 16) {
     birtherror.innerText = `Vous n'avez pas l'age requis ( - 16 )`
-    inputBirthdate.classList.add('alert-input')
+    birthdate.classList.add('alert-input')
   } else {
     birtherror.innerText = ``
-    inputBirthdate.classList.remove('alert-input')
+    birthdate.classList.remove('alert-input')
   }
 })
 

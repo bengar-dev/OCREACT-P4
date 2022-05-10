@@ -3,7 +3,7 @@ function validEmail(value) { // fonction regex qui vérifie le format de l'email
 }
 
 function validName(value) { // fonction regex qui vérifie que le nom/prénom compte plus de deux caractères
-  return /^([A-Z][a-z]+([ ]?[a-z]?['-]?[A-Z][a-z]+)*)$/g.test(value);
+  return /^([A-Za-z ]+)\s*\|\s*([A-Za-z ]+)\s*\|\s*(\d+)$/g.test(value);
 }
 
 function validNumber(value) { // fonction regex qui vérifie si l'utilisateur saisie bien un nombre
