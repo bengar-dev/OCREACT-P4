@@ -121,9 +121,17 @@ btnSubmit.addEventListener('click', (e) => {
                 <button id='closemdl'>Fermer</button>
             </div>
             `;
+
+            
     document.getElementById("closemdl").addEventListener("click", () => { // on rajoute un événement pour fermer la modal avec le nouveau boutton "Fermer"
 
       launchModal() // on Ferme la Modal
+      // On rénitialise les valeurs de nos champs
+      firstname.value = ""
+      lastname.value = ""
+      email.value = ""
+      birthdate.value = ""
+      qtyTournament.value = ""
       location.reload() // on reload notre page pour rénitialiser notre formulaire
 
     }); 
